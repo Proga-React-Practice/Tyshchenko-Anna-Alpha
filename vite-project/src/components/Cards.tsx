@@ -1,44 +1,66 @@
-import './Cards.css'
+import "./Cards.css";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
+import { Genre } from "./Form";
 
-interface Description {
-  title: string;
-  description: string;
-  image: string;
-  audio:string;
-  text: string;
+interface FavoriteCard {
+  name: string;
+  artist: string;
 }
 
+interface Props {
+  data: {
+    name: string;
+    genre: Genre;
+    artist: string;
+    date: string;
+  };
+}
 
-export default function Cards({title, image, description,audio,text}:Description){
+export default function Cards({ data }: Props) {
+  const [isFavorite, setIsFavorite] = useState(false);
 
-  
-    return(
-     
-      <div className='area'>
-       
-      <div  className = 'cards'> 
-      <div className='thefront'>
-      <ul>
-        <li>
-        <h3>{title}</h3>
-        <img src={image} alt={title} />
-        <p>{description}</p>           
-      </li>
-      </ul>
-      </div>
-      <div className='theback'>
-        <h3>{title}</h3>
-        <p>{text}</p>
-      </div>
-      </div>
+  const toggleFavorite = () => {
+    setIsFavorite(!isFavorite);
+    const favorites: FavoriteCard[] = JSON.parse(
+      localStorage.getItem("favorites") || "[]"
+    );
+    if (!isFavorite) {
+      const newFavorites = [...favorites, data];
+      localStorage.setItem("favorites", JSON.stringify(newFavorites));
+    } else {
+      const newFavorites = favorites.filter(
+        (item: FavoriteCard) => item.name !== data.name
+      );
+      localStorage.setItem("favorites", JSON.stringify(newFavorites));
+    }
+  };
 
-      
-         <audio controls>
-      <source src={audio} type="audio/mpeg" />
-    </audio>
+  const handleToggleFavorite = () => {
+    toggleFavorite();
+  };
+
+  return (
+    <div className="area">
+      <div className="cards">
+        <div className="thefront">
+          <ul>
+            <h3>Name of the song:</h3> <p>{data?.name}</p>
+            <h3>Genre:</h3> <p>{data?.genre}</p>
+            <h3>Artist:</h3> <p>{data?.artist}</p>
+            <h3>Date for note:</h3> <p>{data?.date}</p>
+          </ul>
+        </div>  
+        <div onClick={handleToggleFavorite} style={{ cursor: "pointer" }}>
+          {isFavorite ? (
+            <FontAwesomeIcon icon={faHeart} className="heart-filled" />
+          ) : (
+            <FontAwesomeIcon icon={faHeart} className="heart-empty" />
+          )}
+        </div>
       </div>
-      
-  
-    )
+    </div>
+  );
 }

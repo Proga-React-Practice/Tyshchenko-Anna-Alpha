@@ -1,6 +1,6 @@
 import "./App.css";
 import Form, { FormData } from "./components/Form.tsx";
-import Cards from "./components/Cards.tsx";
+import Card from "./components/Card.tsx";
 import { useState } from "react";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
         <ul className="cardscontent">
           {formDataList.map((formData, index) => (
             <li key={index}>
-              <Cards data={formData} />
+              <Card data={formData} />
             </li>
           ))}
         </ul>

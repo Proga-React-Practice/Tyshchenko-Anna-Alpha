@@ -1,5 +1,5 @@
 import "./Form.css";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
@@ -35,13 +35,6 @@ export default function Form({ onSubmit }: Props) {
   });
 
   const today = new Date().toISOString().split("T")[0];
-  const dateInputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (dateInputRef.current) {
-      dateInputRef.current.max = today;
-    }
-  }, [today]);
 
   function handleInput(
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -113,12 +106,11 @@ export default function Form({ onSubmit }: Props) {
         />
         <label htmlFor="date">Date for note:</label>
         <input
-          ref={dateInputRef}
           type="date"
           id="date"
           name="date"
           min="1980-01-01"
-          max="{today}"
+          max={today}
           value={formData.date}
           required
           onChange={handleInput}

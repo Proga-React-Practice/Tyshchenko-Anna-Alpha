@@ -1,9 +1,8 @@
-import "./Cards.css";
+import "./Card.css";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-
-import { Genre } from "./Form";
+import { FormData } from "./Form";
 
 interface FavoriteCard {
   name: string;
@@ -11,12 +10,7 @@ interface FavoriteCard {
 }
 
 interface Props {
-  data: {
-    name: string;
-    genre: Genre;
-    artist: string;
-    date: string;
-  };
+  data: FormData;
 }
 
 export default function Cards({ data }: Props) {
@@ -52,7 +46,7 @@ export default function Cards({ data }: Props) {
             <h3>Artist:</h3> <p>{data?.artist}</p>
             <h3>Date for note:</h3> <p>{data?.date}</p>
           </ul>
-        </div>  
+        </div>
         <div onClick={handleToggleFavorite} style={{ cursor: "pointer" }}>
           {isFavorite ? (
             <FontAwesomeIcon icon={faHeart} className="heart-filled" />

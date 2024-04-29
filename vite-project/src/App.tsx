@@ -5,7 +5,7 @@ import { Box, Grid } from "@mui/material";
 import { lightTheme, darkTheme } from "./theme/theme.tsx";
 import { ThemeProvider } from "@mui/material";
 import "./App.css";
-import { MaterialUISwitch } from "./theme/switch.tsx";
+import { MaterialUISwitch } from "./components/styled/switch.tsx";
 import Modal from "./components/Modal.tsx";
 import { useTheme } from "@mui/material";
 
@@ -31,15 +31,6 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("favorites") || "[]");
-    setFormDataList(storedData);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(formDataList));
-  }, [formDataList]);
-
   const handleThemeChange = () => {
     setDarkMode((prevDarkMode) => {
       if (!prevDarkMode) {
@@ -57,7 +48,6 @@ function App() {
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <div className="App">
         <Box
-          className="content"
           sx={{
             display: "flex",
             justifyContent: "flex-end",
@@ -68,25 +58,22 @@ function App() {
             sx={{
               backgroundColor: "background.default",
               boxShadow: "inset 0 0 10px rgba(0, 0, 0, 0.5)",
-              width: "15rem",
-              height: "6rem",
+              width: 230,
+              height: 90,
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "center",
-              marginLeft: "1rem",
-              marginTop: "-3rem",
-              borderRadius: "2rem",
+              marginLeft: 2,
+              marginTop: -6,
+              borderRadius: 8,
               [theme.breakpoints.down("lg")]: {
-                marginTop: "0rem",
+                marginTop: 0,
               },
             }}
           >
             <MaterialUISwitch checked={darkMode} onChange={handleThemeChange} />
-            <Modal
-              Mytheme={darkMode ? darkTheme : lightTheme}
-              formDataList={formDataList}
-            />
+            <Modal formDataList={formDataList} />
           </Box>
           <Box
             sx={{
@@ -102,18 +89,12 @@ function App() {
               },
             }}
           >
-            <Form
-              onSubmit={handleFormSubmit}
-              Mytheme={darkMode ? darkTheme : lightTheme}
-            />
+            <Form onSubmit={handleFormSubmit} />
 
             <Grid container columnSpacing={2} sx={{ width: "55rem" }}>
               {formDataList.map((formData, index) => (
                 <Grid item xs={12} lg={6} key={index}>
-                  <Card
-                    data={formData}
-                    Mytheme={darkMode ? darkTheme : lightTheme}
-                  />
+                  <Card data={formData} />
                 </Grid>
               ))}
             </Grid>

@@ -26,23 +26,23 @@ const lightTheme = createTheme({
   typography: {
     fontFamily: '"Poppins", sans-serif',
     h4: {
-      fontSize: "1.8rem",
-      fontWeight: "1500",
+      fontSize: 28.8,
+      fontWeight: 1500,
     },
     h6: {
-      fontSize: "1.6rem",
-      fontWeight: "500",
+      fontSize: 25.6,
+      fontWeight: 500,
     },
     h3: {
-      fontSize: "3rem",
-      marginBottom: "0.5rem",
-      marginTop: "3rem",
-      fontWeight: "750",
+      fontSize: 48,
+      marginBottom: 0.5,
+      marginTop: 56,
+      fontWeight: 750,
     },
     body1: {
-      fontSize: "2rem",
-      fontWeight: "500",
-      marginTop: "1rem",
+      fontSize: 32,
+      fontWeight: 500,
+      marginTop: 15,
     },
   },
   components: {
@@ -50,20 +50,20 @@ const lightTheme = createTheme({
       styleOverrides: {
         root: {
           fontWeight: "bold",
-          fontSize: "1.6rem",
+          fontSize: 25.6,
           textDecoration: "none",
-          marginTop: "1.5rem",
+          marginTop: 25,
         },
       },
     },
     MuiTextField: {
       styleOverrides: {
         root: {
-          width: "40rem",
-          height: "2.9rem",
-          fontSize: "1rem",
-          marginTop: "-1rem",
-          marginBottom: "2rem",
+          width: "95%",
+          height: 46.4,
+          fontSize: 16,
+          marginTop: -16,
+          marginBottom: 32,
         },
       },
       defaultProps: {
@@ -72,8 +72,8 @@ const lightTheme = createTheme({
             style: {
               backgroundColor: "#fff",
               color: "#000",
-              borderRadius: "0.7rem",
-              fontSize: "1.5rem",
+              borderRadius: 11.2,
+              fontSize: 24,
             },
           },
         },
@@ -83,17 +83,17 @@ const lightTheme = createTheme({
     MuiSelect: {
       styleOverrides: {
         root: {
-          fontSize: "1.3rem",
-          marginTop: "-0.5rem",
+          fontSize: 20.8,
+          marginTop: -8,
         },
       },
       defaultProps: {
         SelectDisplayProps: {
           style: {
-            width: "37rem",
+            width: 600,
             backgroundColor: "#fff",
-            borderRadius: "0.7rem",
-            height: "2rem",
+            borderRadius: 1,
+            height: 32,
           },
         },
       },
@@ -101,15 +101,15 @@ const lightTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          width: "32rem",
-          height: "4rem",
-          padding: "0.75rem 1.5rem",
+          width: 512,
+          height: 64,
+          padding: "12 24",
           border: "none",
-          borderRadius: "0.5rem",
+          borderRadius: 8,
           cursor: "pointer",
-          marginTop: "3rem",
-          marginLeft: "1rem",
-          fontSize: "1.5rem",
+          marginTop: 44,
+          marginLeft: 16,
+          fontSize: 24,
           textTransform: "none",
           transition: "background-color 0.3s ease, transform 0.3s ease 0s",
           "&:hover": {
@@ -148,25 +148,25 @@ const darkTheme = createTheme({
   typography: {
     fontFamily: '"Poppins", sans-serif',
     h4: {
-      fontSize: "1.8rem",
-      fontWeight: "1500",
+      fontSize: 28.8,
+      fontWeight: 1500,
       color: "#ddc3bf",
     },
     h6: {
-      fontSize: "1.6rem",
-      fontWeight: "500",
+      fontSize: 25.6,
+      fontWeight: 500,
       color: "#ddc3bf",
     },
     h3: {
-      fontSize: "3rem",
-      marginBottom: "0.5rem",
-      marginTop: "3rem",
-      fontWeight: "750",
+      fontSize: 48,
+      marginBottom: 0.5,
+      marginTop: 56,
+      fontWeight: 750,
     },
     body1: {
-      fontSize: "2rem",
-      fontWeight: "500",
-      marginTop: "1rem",
+      fontSize: 32,
+      fontWeight: 500,
+      marginTop: 15,
     },
   },
   components: {
@@ -174,20 +174,20 @@ const darkTheme = createTheme({
       styleOverrides: {
         root: {
           fontWeight: "bold",
-          fontSize: "1.6rem",
+          fontSize: 25.6,
           textDecoration: "none",
-          marginTop: "1.5rem",
+          marginTop: 25,
         },
       },
     },
     MuiTextField: {
       styleOverrides: {
         root: {
-          width: "40rem",
-          height: "2.9rem",
-          fontSize: "1rem",
-          marginTop: "-1rem",
-          marginBottom: "2rem",
+          width: "95%",
+          height: 46.4,
+          fontSize: 16,
+          marginTop: -16,
+          marginBottom: 32,
         },
       },
       defaultProps: {
@@ -196,8 +196,8 @@ const darkTheme = createTheme({
             style: {
               backgroundColor: "rgba(0, 0, 0, 0.5)",
               color: "#fff",
-              borderRadius: "0.7rem",
-              fontSize: "1.5rem",
+              borderRadius: 11.2,
+              fontSize: 24,
             },
           },
         },
@@ -207,18 +207,18 @@ const darkTheme = createTheme({
     MuiSelect: {
       styleOverrides: {
         root: {
-          fontSize: "1.3rem",
-          marginTop: "-0.5rem",
+          fontSize: 20.8,
+          marginTop: -8,
         },
       },
       defaultProps: {
         SelectDisplayProps: {
           style: {
-            width: "37rem",
+            width: 600,
             backgroundColor: "rgba(0, 0, 0, 0.5)",
             color: "#fff",
-            borderRadius: "0.7rem",
-            height: "2rem",
+            borderRadius: 1,
+            height: 32,
           },
         },
       },
@@ -226,16 +226,15 @@ const darkTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          width: "32rem",
-          height: "4rem",
-          padding: "0.75rem 1.5rem",
+          width: 512,
+          height: 64,
+          padding: "12 24",
           border: "none",
-          borderRadius: "0.5rem",
+          borderRadius: 8,
           cursor: "pointer",
-          marginTop: "3rem",
-          marginLeft: "1rem",
-
-          fontSize: "1.5rem",
+          marginTop: 44,
+          marginLeft: 16,
+          fontSize: 24,
           textTransform: "none",
           transition: "background-color 0.3s ease, transform 0.3s ease 0s",
           "&:hover": {

@@ -11,13 +11,11 @@ import {
   MenuItem,
 } from "@mui/material";
 import { SelectChangeEvent } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
-import { Theme } from "@mui/material/styles";
+
 import { useTheme } from "@mui/material";
 
 interface Props {
   onSubmit: (data: FormData) => void;
-  Mytheme: Theme;
 }
 
 enum Genre {
@@ -39,7 +37,7 @@ export type FormData = {
   date: string;
 };
 
-export default function Form({ onSubmit, Mytheme }: Props) {
+export default function Form({ onSubmit }: Props) {
   const theme = useTheme();
 
   const [formData, setFormData] = useState<FormData>({
@@ -98,192 +96,185 @@ export default function Form({ onSubmit, Mytheme }: Props) {
   }
 
   return (
-    <ThemeProvider theme={Mytheme}>
-      <Box
-        className="container"
-        sx={{
-          display: "flex",
-          flexDirection: "column",
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: 900,
+        height: 950,
+        borderRadius: 18,
+        marginLeft: -2,
+        marginTop: 2.5,
+        flexGrow: 1,
+        backgroundColor: "background.default",
+        boxShadow: "inset 0 0 10px rgba(0, 0, 0, 0.5)",
+        [theme.breakpoints.up("lg")]: {
+          width: 900,
+          height: 950,
+        },
+        [theme.breakpoints.down("lg")]: {
+          width: 750,
+          height: 800,
+          marginLeft: -30,
+          marginTop: 14,
           alignItems: "center",
-          width: "56.25rem",
-          height: "59.3rem",
-          borderRadius: "4rem",
-          marginLeft: "-2rem",
-          marginTop: "2.5rem",
-          flexGrow: "1",
-          backgroundColor: "background.default",
-          boxShadow: "inset 0 0 10px rgba(0, 0, 0, 0.5)",
-          [theme.breakpoints.up("lg")]: {
-            width: "56.25rem",
-            height: "59.3rem",
-          },
+        },
+      }}
+    >
+      <Typography
+        variant="h3"
+        sx={{
+          color: "primary.main",
           [theme.breakpoints.down("lg")]: {
-            width: "46.25rem",
-            height: "49.3rem",
-            marginLeft: "-15rem",
-            marginTop: "7rem",
-            alignItems: "center",
+            fontSize: 30,
           },
         }}
       >
-        <Typography
-          variant="h3"
+        Your day, your choice, your song
+      </Typography>
+
+      <Typography
+        variant="body1"
+        sx={{
+          color: "primary.main",
+          [theme.breakpoints.down("lg")]: {
+            fontSize: 30,
+            marginTop: 1,
+          },
+        }}
+      >
+        Form & Cards
+      </Typography>
+
+      <form onSubmit={handleSubmit}>
+        <FormControl
+          id="form"
           sx={{
-            color: "primary.main",
-            [theme.breakpoints.down("lg")]: {
-              fontSize: "2rem",
-            },
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            flexWrap: "wrap",
+            gap: { xs: 2, lg: 1.6 },
           }}
         >
-          Your day, your choice, your song
-        </Typography>
+          <FormLabel htmlFor="name">Name of the song:</FormLabel>
 
-        <Typography
-          variant="body1"
-          sx={{
-            color: "primary.main",
-            [theme.breakpoints.down("lg")]: {
-              fontSize: "1.5rem",
-              marginTop: "1rem",
-            },
-          }}
-        >
-          Form & Cards
-        </Typography>
+          <TextField
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            required
+            onChange={handleInput}
+            sx={{
+              [theme.breakpoints.down("lg")]: {
+                width: "85%",
+                height: 15,
+              },
+            }}
+          />
+          <FormLabel htmlFor="genre">Genre:</FormLabel>
+          <Select
+            sx={{
+              color: "text.secondary",
+              fontSize: 25,
+              [theme.breakpoints.down("lg")]: {
+                width: "85%",
+                height: 15,
+                marginTop: 1.5,
+              },
+            }}
+            id="genre"
+            name="genre"
+            value={formData.genre}
+            required
+            onChange={handleSelectChange}
+          >
+            {Object.values(Genre).map((genre) => (
+              <MenuItem
+                sx={{ color: "primary.main", fontSize: 20 }}
+                key={genre}
+                value={genre}
+              >
+                {genre}
+              </MenuItem>
+            ))}
+          </Select>
 
-        <form onSubmit={handleSubmit}>
-          <FormControl
-            id="form"
+          <FormLabel htmlFor="artist">Artist:</FormLabel>
+
+          <TextField
+            type="text"
+            id="artist"
+            name="artist"
+            value={formData.artist}
+            required
+            onChange={handleInput}
+            sx={{
+              [theme.breakpoints.down("lg")]: {
+                width: "85%",
+                height: 15,
+              },
+            }}
+          />
+          <FormLabel htmlFor="date">Date for note:</FormLabel>
+
+          <TextField
+            type="date"
+            id="date"
+            name="date"
+            value={formData.date}
+            required
+            onChange={handleInput}
+            sx={{
+              [theme.breakpoints.down("lg")]: {
+                width: "85%",
+                height: 15,
+              },
+            }}
+          />
+          <Box
+            id="buttons"
             sx={{
               display: "flex",
-              flexDirection: "column",
               alignItems: "center",
-              justifyContent: "center",
-              flexWrap: "wrap",
-              gap: "1rem",
-
               [theme.breakpoints.down("lg")]: {
-                gap: "0.5rem",
+                width: "75%",
               },
             }}
           >
-            <FormLabel htmlFor="name">Name of the song:</FormLabel>
-
-            <TextField
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              required
-              onChange={handleInput}
+            <Button
+              type="submit"
+              variant="contained"
               sx={{
-                [theme.breakpoints.down("lg")]: {
-                  width: "35rem",
-                  height: "1.5rem",
-                },
+                backgroundColor: "secondary.main",
+                color: "secondary.contrastText",
               }}
-            />
-            <FormLabel htmlFor="genre">Genre:</FormLabel>
-            <Select
+              className="btn"
+            >
+              Submit
+            </Button>
+            <Button
+              type="button"
+              onClick={handleReset}
               sx={{
+                width: "18%",
+                height: 55,
+                backgroundColor: "text.primary",
                 color: "text.secondary",
-                fontSize: "1.7rem",
-                [theme.breakpoints.down("lg")]: {
-                  width: "35rem",
-                  height: "1.5rem",
-                  marginTop: "1.5rem",
-                },
+                "&:hover": { color: "text.primary" },
               }}
-              id="genre"
-              name="genre"
-              value={formData.genre}
-              required
-              onChange={handleSelectChange}
+              className="button"
+              variant="contained"
+              startIcon={<DeleteOutlineIcon />}
             >
-              {Object.values(Genre).map((genre) => (
-                <MenuItem
-                  sx={{ color: "primary.main", fontSize: "1.5rem" }}
-                  key={genre}
-                  value={genre}
-                >
-                  {genre}
-                </MenuItem>
-              ))}
-            </Select>
-
-            <FormLabel htmlFor="artist">Artist:</FormLabel>
-
-            <TextField
-              type="text"
-              id="artist"
-              name="artist"
-              value={formData.artist}
-              required
-              onChange={handleInput}
-              sx={{
-                [theme.breakpoints.down("lg")]: {
-                  width: "35rem",
-                  height: "1.5rem",
-                },
-              }}
-            />
-            <FormLabel htmlFor="date">Date for note:</FormLabel>
-
-            <TextField
-              type="date"
-              id="date"
-              name="date"
-              value={formData.date}
-              required
-              onChange={handleInput}
-              sx={{
-                [theme.breakpoints.down("lg")]: {
-                  width: "35rem",
-                  height: "1.5rem",
-                },
-              }}
-            />
-            <Box
-              id="buttons"
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                [theme.breakpoints.down("lg")]: {
-                  width: "40rem",
-                },
-              }}
-            >
-              <Button
-                type="submit"
-                variant="contained"
-                sx={{
-                  backgroundColor: "secondary.main",
-                  color: "secondary.contrastText",
-                }}
-                className="btn"
-              >
-                Submit
-              </Button>
-              <Button
-                type="button"
-                onClick={handleReset}
-                sx={{
-                  width: "7rem",
-                  height: "3rem",
-                  backgroundColor: "text.primary",
-                  color: "text.secondary",
-                  "&:hover": { color: "text.primary" },
-                }}
-                className="button"
-                variant="contained"
-                startIcon={<DeleteOutlineIcon />}
-              >
-                Clear
-              </Button>
-            </Box>
-          </FormControl>
-        </form>
-      </Box>
-    </ThemeProvider>
+              Clear
+            </Button>
+          </Box>
+        </FormControl>
+      </form>
+    </Box>
   );
 }

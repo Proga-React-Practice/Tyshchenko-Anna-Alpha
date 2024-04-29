@@ -1,61 +1,19 @@
 html,
 body {
-  min-height: 100%;
   margin: 0;
   padding: 0;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+.light-body {
   background-image: radial-gradient(circle at center, #e8adc7, #f1d28d);
-  transition: font-size 0.5s ease;
 }
 
-.content {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-}
-
-.content .cardscontent {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0rem;
-  text-align: center;
-  justify-items: center;
-  align-items: center;
-}
-
-@media (max-width: 1200px) {
-  html {
-    font-size: 90%;
-  }
-  .content .cardscontent {
-    grid-template-columns: 2fr;
-  }
-  .content {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 991px) {
-  html {
-    font-size: 75%;
-  }
-  .content .cardscontent {
-    grid-template-columns: 1fr;
-  }
-  .content {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 786px) {
-  html {
-    font-size: 65%;
-  }
-  .content .cardscontent {
-    grid-template-columns: 1fr;
-  }
-
-  .content {
-    flex-direction: column;
-  }
+.dark-body {
+  background-image: radial-gradient(
+    circle at center,
+    rgba(131, 69, 60, 1) 0%,
+    rgba(32, 32, 107, 1) 100%
+  );
 }

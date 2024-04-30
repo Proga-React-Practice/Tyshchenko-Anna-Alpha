@@ -260,7 +260,7 @@ export default function Form({ onSubmit }: Props) {
               type="button"
               onClick={handleReset}
               sx={{
-                width: "18%",
+                width: { xs: "32%", lg: "18%" },
                 height: 55,
                 backgroundColor: "text.primary",
                 color: "text.secondary",

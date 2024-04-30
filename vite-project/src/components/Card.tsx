@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FormData } from "./Form";
-import { Typography, Box, List } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useTheme } from "@mui/material";
 
@@ -76,23 +76,18 @@ export default function Cards({ data }: Props) {
             display: "flex",
             textAlign: "center",
             alignItems: "center",
+            flexDirection: "column",
+            marginTop: { lg: 6, xs: 12 },
           }}
         >
-          <List
-            sx={{
-              flex: "1 1 48%",
-              listStyleType: "none",
-            }}
-          >
-            <Typography variant="h4">Name of the song:</Typography>
-            <Typography variant="h6">{data?.name}</Typography>
-            <Typography variant="h4">Genre:</Typography>
-            <Typography variant="h6">{data?.genre}</Typography>
-            <Typography variant="h4">Artist:</Typography>
-            <Typography variant="h6">{data?.artist}</Typography>
-            <Typography variant="h4">Date for note:</Typography>
-            <Typography variant="h6">{data?.date}</Typography>
-          </List>
+          <Typography variant="h4">Name of the song:</Typography>
+          <Typography variant="h6">{data?.name}</Typography>
+          <Typography variant="h4">Genre:</Typography>
+          <Typography variant="h6">{data?.genre}</Typography>
+          <Typography variant="h4">Artist:</Typography>
+          <Typography variant="h6">{data?.artist}</Typography>
+          <Typography variant="h4">Date for note:</Typography>
+          <Typography variant="h6">{data?.date}</Typography>
         </Box>
 
         <FavoriteIcon

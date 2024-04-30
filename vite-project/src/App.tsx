@@ -23,12 +23,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    document.body.classList.add("light-body");
-
-    return () => {
-      document.body.classList.remove("light-body");
-      document.body.classList.remove("dark-body");
-    };
+    handleThemeChange();
   }, []);
 
   const handleThemeChange = () => {
@@ -46,7 +41,7 @@ function App() {
 
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-      <div className="App">
+      <Box>
         <Box
           sx={{
             display: "flex",
@@ -100,7 +95,7 @@ function App() {
             </Grid>
           </Box>
         </Box>
-      </div>
+      </Box>
     </ThemeProvider>
   );
 }
